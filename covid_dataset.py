@@ -26,10 +26,8 @@ plt.show()'''
 
 
 
-# Filter the data for a specific country (e.g., India)
+# data for a specific country
 india_data = data[data['Country'] == 'India'][['Confirmed', 'Recovered', 'Deaths']].sum()
-
-# Plot the global data
 plt.figure(figsize=(5, 5))
 
 plt.bar(india_data.index, india_data.values, color=['blue', 'green', 'red'])
