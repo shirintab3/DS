@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-data=pd.read_csv("LifeExpectancy.csv")
+data=pd.read_csv("C:\\Users\\shiri\\OneDrive\\Desktop\\Data Science\\extras\\LifeExpectancy.csv")
 print(data.shape)
 
 # Strip leading and trailing spaces from column names
@@ -32,22 +32,19 @@ print(data.isnull().sum())
 #Create a bar plot to find out whether 
 # the average age of death had increased globally in a period of 15 years i.e. between 2000 and 2015.
 # Filter the data for the years 2000 and 2015
-data_filtered = data[data['Year'].isin([2000, 2015])]
+#data_filtered = data[data['Year'].inrange(2000, 2015)]
 
-# Group by year and calculate the average life expectancy for each year
-avg_life_expectancy = data_filtered.groupby('Year')['Life expectancy'].mean()
 
-# Create a bar plot to compare the average life expectancy in 2000 and 2015
+avg_life_expectancy = data.groupby('Year')['Life expectancy'].mean()
+
+
 plt.figure(figsize=(8, 6))
-avg_life_expectancy.plot(kind='line', color=['blue', 'green'])
+avg_life_expectancy.plot(kind='bar', color=['blue', 'green'])
 
-# Add labels and title
-plt.title('Average Life Expectancy Comparison (2000 vs 2015)')
+
+plt.title('Average Life Expectancy Comparison (2000 to 2015)')
 plt.xlabel('Year')
-plt.ylabel('Average Life Expectancy (Years)')
-
-# Show the plot
-plt.xticks(rotation=0)
+plt.ylabel('Average Life Expectancy Years')
 plt.tight_layout()
 plt.show()
 
