@@ -32,9 +32,6 @@ print(data.isnull().sum())
 #Create a bar plot to find out whether 
 # the average age of death had increased globally in a period of 15 years i.e. between 2000 and 2015.
 # Filter the data for the years 2000 and 2015
-#data_filtered = data[data['Year'].inrange(2000, 2015)]
-
-
 avg_life_expectancy = data.groupby('Year')['Life expectancy'].mean()
 
 
