@@ -28,21 +28,13 @@ print(len(NorthAm))
 
 # Group by publisher and sum sales across different regions
 
-import matplotlib.pyplot as plt
-
-# Add a new column for total sales across all regions
 data['Total_Sales'] = data[['NA_Sales', 'EU_Sales', 'JP_Sales', 'Other_Sales']].sum(axis=1)
 
-# Group by publisher and calculate total sales for each region
 publisher_sales = data.groupby('Publisher')[['NA_Sales', 'EU_Sales', 'JP_Sales', 'Other_Sales', 'Global_Sales']].sum()
-
-# Identify the top 10 publishers based on overall total sales
 top_10_publishers = publisher_sales.sum(axis=1).sort_values(ascending=False).head(10).index
 
-# Filter the publisher sales data for only the top 10 publishers
-publisher_sales_top10 = publisher_sales.loc[top_10_publishers]
 
-# Plotting line charts for each region
+publisher_sales_top10 = publisher_sales.loc[top_10_publishers]
 plt.figure(figsize=(12, 8))
 regions = ['NA_Sales', 'EU_Sales', 'JP_Sales', 'Other_Sales', 'Global_Sales']
 
